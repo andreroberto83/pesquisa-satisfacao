@@ -3,7 +3,6 @@ package br.com.aweb.pesquisa_satisfacao.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.aweb.pesquisa_satisfacao.model.Setor;
@@ -13,8 +12,11 @@ import jakarta.transaction.Transactional;
 @Service
 public class SetorService {
 
-    @Autowired
-    private SetorRepository setorRepository;
+    private final SetorRepository setorRepository;
+
+    public SetorService(SetorRepository setorRepository) {
+        this.setorRepository = setorRepository;
+    }
 
     @Transactional
     public Setor salvarSetor(Setor setor) {

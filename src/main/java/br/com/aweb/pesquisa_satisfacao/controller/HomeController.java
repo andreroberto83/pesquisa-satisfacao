@@ -3,7 +3,6 @@ package br.com.aweb.pesquisa_satisfacao.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +14,12 @@ import br.com.aweb.pesquisa_satisfacao.repository.SetorRepository;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-    @Autowired
-    private SetorRepository setorRepository;
+
+    private final SetorRepository setorRepository;
+
+    public HomeController(SetorRepository setorRepository) {
+        this.setorRepository = setorRepository;
+    }
 
     @GetMapping
     public ModelAndView home() {
