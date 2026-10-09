@@ -9,15 +9,18 @@
 </head>
 
 <body>
+
     <div th:replace="~{fragments/navbar :: navbar-geral}"></div>
+
     <div class="body-centered-content">
         <div class="home-container">
             <h1>Pesquisa de Satisfação</h1>
             <p>Bem-vindo ao sistema. Escolha uma opção para continuar.</p>
             <div class="home-actions">
                 <button id="btn-nova-avaliacao" class="btn-home">Nova Avaliação</button>
-                <a th:href="@{/setores}" class="btn-home">Gerenciar Setores</a>
-                </div>
+                <!-- <a th:href="@{/setores}" class="btn-home">Gerenciar Setores</a> -->
+                <a th:href="@{/setores}" class="btn-home" sec:authorize="hasRole('ADMIN')">Gerenciar Setores</a>
+            </div>
         </div>
     </div>
 
